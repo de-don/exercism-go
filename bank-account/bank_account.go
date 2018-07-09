@@ -17,12 +17,12 @@ func Open(sum int) *Bank {
 	return &bank
 }
 
-// lock bank using chan
+// Lock bank using chan.
 func (b *Bank) Lock() {
 	<-*b.ch
 }
 
-// unlock bank using chan
+// Unlock bank using chan.
 func (b *Bank) Unlock() {
 	*b.ch <- true
 }

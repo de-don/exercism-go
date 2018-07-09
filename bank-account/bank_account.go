@@ -27,7 +27,7 @@ func (b *Bank) Unlock() {
 	*b.ch <- true
 }
 
-func (b Bank) Balance() (int, bool) {
+func (b *Bank) Balance() (int, bool) {
 	if b.open {
 		return b.balance, true
 	}

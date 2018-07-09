@@ -1,30 +1,20 @@
 package account
 
+import "sync"
+
 type Bank struct {
 	balance int
 	open    bool
-	ch      *chan bool
+	sync.Mutex
 }
 
 func Open(sum int) *Bank {
 	if sum < 0 {
 		return nil
 	}
-	ch := make(chan bool, 1)
-	bank := Bank{balance: sum, open: true, ch: &ch}
-	bank.Unlock()
+	bank := Bank{balance: sum, open: true}
 
 	return &bank
-}
-
-// Lock bank using chan.
-func (b *Bank) Lock() {
-	<-*b.ch
-}
-
-// Unlock bank using chan.
-func (b *Bank) Unlock() {
-	*b.ch <- true
 }
 
 func (b *Bank) Balance() (int, bool) {

@@ -11,7 +11,7 @@ func Hey(remark string) string {
 	}
 
 	yell := (strings.ToUpper(remark) == remark) && !(strings.ToUpper(remark) == strings.ToLower(remark))
-	question := remark[len(remark) - 1] == '?'
+	question := remark[len(remark)-1] == '?'
 	if yell && question {
 		return "Calm down, I know what I'm doing!"
 	}

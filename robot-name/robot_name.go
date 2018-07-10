@@ -1,8 +1,8 @@
 package robotname
 
 import (
-	"strconv"
 	"math/rand"
+	"strconv"
 )
 
 type Robot struct {
@@ -19,7 +19,7 @@ func genRandName() string {
 var usedNames map[string]bool
 
 func (r *Robot) Name() string {
-	for ; len(r.name) == 0; {
+	for len(r.name) == 0 {
 		name := genRandName()
 		if usedNames == nil {
 			usedNames = make(map[string]bool)

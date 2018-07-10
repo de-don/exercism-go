@@ -1,9 +1,9 @@
 package matrix
 
 import (
-	"strings"
-	"strconv"
 	"errors"
+	"strconv"
+	"strings"
 )
 
 type Matrix struct {

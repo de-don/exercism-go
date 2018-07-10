@@ -20,14 +20,14 @@ func Valid(str string) bool {
 	if len(arr) <= 1 {
 		return false
 	}
-	k := len(arr) % 2 + 1
+	k := len(arr)%2 + 1
 	sum := 0
 
 	for _, number := range arr {
-		r := (k % 2 + 1) * number
-		sum += (r - 1) % 9 + 1
+		r := (k%2 + 1) * number
+		sum += (r-1)%9 + 1
 		k++
 	}
 
-	return sum % 10 == 0
+	return sum%10 == 0
 }

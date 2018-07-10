@@ -7,11 +7,11 @@ import (
 )
 
 func Square(num int) (uint64, error) {
-	if num <= 0 || num > 64{
+	if num <= 0 || num > 64 {
 		return 0, errors.New("invalid number")
 	}
 
-	return uint64(math.Pow(float64(2), float64(num - 1))), nil
+	return uint64(math.Pow(float64(2), float64(num-1))), nil
 }
 
 func Total() uint64 {

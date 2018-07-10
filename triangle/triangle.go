@@ -1,28 +1,33 @@
-// This is a "stub" file.  It's a little start on your solution.
-// It's not a complete solution though; you have to write some code.
-
-// Package triangle should have a package comment that summarizes what it's about.
-// https://golang.org/doc/effective_go.html#commentary
 package triangle
 
-
-// Notice KindFromSides() returns this type. Pick a suitable data type.
-type Kind
-
-const (
-    // Pick values for the following identifiers used by the test program.
-    NaT // not a triangle
-    Equ // equilateral
-    Iso // isosceles
-    Sca // scalene
+import (
+	"math"
 )
 
-// KindFromSides should have a comment documenting it.
+type Kind int
+
+const (
+	NaT = -1 // not a triangle
+	Equ = 2  // equilateral
+	Iso = 1  // isosceles
+	Sca = 0  // scalene
+)
+
 func KindFromSides(a, b, c float64) Kind {
-	// Write some code here to pass the test suite.
-	// Then remove all the stock comments.
-	// They're here to help you get started but they only clutter a finished solution.
-	// If you leave them in, reviewers may protest!
+	x := a * b * c
+	if (x == 0) || math.IsNaN(x) || math.IsInf(x, 0) {
+		return NaT
+	}
+	if (a+b < c) || (a+c < b) || (b+c < a) {
+		return NaT
+	}
 	var k Kind
+	if a == b {
+		k++
+	}
+	if a == c || c == b {
+		k++
+	}
+
 	return k
 }
